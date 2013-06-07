@@ -1,10 +1,16 @@
 {
-    "name": "room13/PhpSolrClient",
+    "name": "emran/PhpSolrClient",
     "description": "A github fork of the solr-php-client from google code at http://code.google.com/p/solr-php-client/",
+    "keywords": ["solr", "helper"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Benjamin Seibert",
             "email": "benjamin.seibert@gmx.de"
+        },
+        {
+            "name": "Emran Hasan",
+            "email": "phpfour@gmail.com"
         }
     ],
     "autoload": {
