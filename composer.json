@@ -1,5 +1,5 @@
 {
-    "name": "emran/PhpSolrClient",
+    "name": "emran/php-solr-client",
     "description": "A github fork of the solr-php-client from google code at http://code.google.com/p/solr-php-client/",
     "keywords": ["solr", "helper"],
     "license": "MIT",
