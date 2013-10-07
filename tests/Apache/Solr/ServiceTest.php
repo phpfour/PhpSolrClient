@@ -459,7 +459,7 @@ class Apache_Solr_ServiceTest extends Apache_Solr_ServiceAbstractTest
 				$this->equalTo('http://localhost:8180/solr/update?wt=json'),
 				
 				// raw post
-				$this->equalTo('<add allowDups="false" overwritePending="true" overwriteCommitted="true"><doc></doc></add>'),
+				$this->equalTo('<add overwrite="true"><doc></doc></add>'),
 				
 				// content type
 				$this->equalTo('text/xml; charset=UTF-8'),
@@ -490,7 +490,7 @@ class Apache_Solr_ServiceTest extends Apache_Solr_ServiceAbstractTest
 				$this->equalTo('http://localhost:8180/solr/update?wt=json'),
 				
 				// raw post
-				$this->equalTo('<add allowDups="true" overwritePending="false" overwriteCommitted="false" commitWithin="3600"><doc></doc></add>'),
+				$this->equalTo('<add overwrite="false" commitWithin="3600"><doc></doc></add>'),
 				
 				// content type
 				$this->equalTo('text/xml; charset=UTF-8'),
@@ -521,7 +521,7 @@ class Apache_Solr_ServiceTest extends Apache_Solr_ServiceAbstractTest
 				$this->equalTo('http://localhost:8180/solr/update?wt=json'),
 			
 				// raw post
-				$this->equalTo('<add allowDups="false" overwritePending="true" overwriteCommitted="true"><doc><field name="guid">global unique id</field><field name="field">value</field><field name="multivalue">value 1</field><field name="multivalue">value 2</field></doc></add>'),
+				$this->equalTo('<add overwrite="true"><doc><field name="guid">global unique id</field><field name="field">value</field><field name="multivalue">value 1</field><field name="multivalue">value 2</field></doc></add>'),
 			
 				// content type
 				$this->equalTo('text/xml; charset=UTF-8'),
@@ -556,7 +556,7 @@ class Apache_Solr_ServiceTest extends Apache_Solr_ServiceAbstractTest
 				$this->equalTo('http://localhost:8180/solr/update?wt=json'),
 		
 				// raw post
-				$this->equalTo('<add allowDups="false" overwritePending="true" overwriteCommitted="true"><doc><field name="guid">global unique id</field><field name="field" boost="2">value</field><field name="multivalue" boost="3">value 1</field><field name="multivalue">value 2</field></doc></add>'),
+				$this->equalTo('<add overwrite="true"><doc><field name="guid">global unique id</field><field name="field" boost="2">value</field><field name="multivalue" boost="3">value 1</field><field name="multivalue">value 2</field></doc></add>'),
 		
 				// content type
 				$this->equalTo('text/xml; charset=UTF-8'),
@@ -595,7 +595,7 @@ class Apache_Solr_ServiceTest extends Apache_Solr_ServiceAbstractTest
 				$this->equalTo('http://localhost:8180/solr/update?wt=json'),
 		
 				// raw post
-				$this->equalTo('<add allowDups="false" overwritePending="true" overwriteCommitted="true"><doc boost="2"><field name="guid">global unique id</field><field name="field">value</field></doc></add>'),
+				$this->equalTo('<add overwrite="true"><doc boost="2"><field name="guid">global unique id</field><field name="field">value</field></doc></add>'),
 		
 				// content type
 				$this->equalTo('text/xml; charset=UTF-8'),
@@ -630,7 +630,7 @@ class Apache_Solr_ServiceTest extends Apache_Solr_ServiceAbstractTest
 				$this->equalTo('http://localhost:8180/solr/update?wt=json'),
 		
 				// raw post
-				$this->equalTo('<add allowDups="false" overwritePending="true" overwriteCommitted="true"><doc></doc><doc></doc></add>'),
+				$this->equalTo('<add overwrite="true"><doc></doc><doc></doc></add>'),
 		
 				// content type
 				$this->equalTo('text/xml; charset=UTF-8'),
@@ -664,7 +664,7 @@ class Apache_Solr_ServiceTest extends Apache_Solr_ServiceAbstractTest
 				$this->equalTo('http://localhost:8180/solr/update?wt=json'),
 				
 				// raw post
-				$this->equalTo('<add allowDups="true" overwritePending="false" overwriteCommitted="false" commitWithin="3600"><doc></doc><doc></doc></add>'),
+				$this->equalTo('<add overwrite="false" commitWithin="3600"><doc></doc><doc></doc></add>'),
 				
 				// content type
 				$this->equalTo('text/xml; charset=UTF-8'),
@@ -698,7 +698,7 @@ class Apache_Solr_ServiceTest extends Apache_Solr_ServiceAbstractTest
 				$this->equalTo('http://localhost:8180/solr/update?wt=json'),
 				
 				// raw post
-				$this->equalTo('<commit expungeDeletes="false" waitFlush="true" waitSearcher="true" />'),
+				$this->equalTo('<commit expungeDeletes="false" waitSearcher="true" softCommit="false" />'),
 				
 				// content type
 				$this->equalTo('text/xml; charset=UTF-8'),
@@ -727,7 +727,7 @@ class Apache_Solr_ServiceTest extends Apache_Solr_ServiceAbstractTest
 				$this->equalTo('http://localhost:8180/solr/update?wt=json'),
 				
 				// raw post
-				$this->equalTo('<commit expungeDeletes="true" waitFlush="false" waitSearcher="false" />'),
+				$this->equalTo('<commit expungeDeletes="true" waitSearcher="false" softCommit="true" />'),
 				
 				// content type
 				$this->equalTo('text/xml; charset=UTF-8'),
