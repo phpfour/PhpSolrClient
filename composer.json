@@ -11,6 +11,10 @@
         {
             "name": "Emran Hasan",
             "email": "phpfour@gmail.com"
+        },
+        {
+            "name": "Ilja Michel",
+            "email": "dev@emichel.de"
         }
     ],
     "autoload": {

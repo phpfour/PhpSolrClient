@@ -516,14 +516,12 @@ class Apache_Solr_Service_Balancer
 	 * Add a Solr Document to the index
 	 *
 	 * @param Apache_Solr_Document $document
-	 * @param boolean $allowDups
-	 * @param boolean $overwritePending
-	 * @param boolean $overwriteCommitted
+	 * @param boolean $overwrite
 	 * @return Apache_Solr_Response
 	 *
 	 * @throws Apache_Solr_HttpTransportException If an error occurs during the service call
 	 */
-	public function addDocument(Apache_Solr_Document $document, $allowDups = false, $overwritePending = true, $overwriteCommitted = true)
+	public function addDocument(Apache_Solr_Document $document, $overwrite = true)
 	{
 		$service = $this->_selectWriteService();
 
@@ -531,7 +529,7 @@ class Apache_Solr_Service_Balancer
 		{
 			try
 			{
-				return $service->addDocument($document, $allowDups, $overwritePending, $overwriteCommitted);
+				return $service->addDocument($document, $overwrite);
 			}
 			catch (Apache_Solr_HttpTransportException $e)
 			{
@@ -551,14 +549,12 @@ class Apache_Solr_Service_Balancer
 	 * Add an array of Solr Documents to the index all at once
 	 *
 	 * @param array $documents Should be an array of Apache_Solr_Document instances
-	 * @param boolean $allowDups
-	 * @param boolean $overwritePending
-	 * @param boolean $overwriteCommitted
+	 * @param boolean $overwrite
 	 * @return Apache_Solr_Response
 	 *
 	 * @throws Apache_Solr_HttpTransportException If an error occurs during the service call
 	 */
-	public function addDocuments($documents, $allowDups = false, $overwritePending = true, $overwriteCommitted = true)
+	public function addDocuments($documents, $overwrite = true)
 	{
 		$service = $this->_selectWriteService();
 
@@ -566,7 +562,7 @@ class Apache_Solr_Service_Balancer
 		{
 			try
 			{
-				return $service->addDocuments($documents, $allowDups, $overwritePending, $overwriteCommitted);
+				return $service->addDocuments($documents, $overwrite);
 			}
 			catch (Apache_Solr_HttpTransportException $e)
 			{
@@ -586,13 +582,13 @@ class Apache_Solr_Service_Balancer
 	 * Send a commit command.  Will be synchronous unless both wait parameters are set
 	 * to false.
 	 *
-	 * @param boolean $waitFlush
 	 * @param boolean $waitSearcher
+	 * @param boolean $softCommit
 	 * @return Apache_Solr_Response
 	 *
 	 * @throws Apache_Solr_HttpTransportException If an error occurs during the service call
 	 */
-	public function commit($optimize = true, $waitFlush = true, $waitSearcher = true, $timeout = 3600)
+	public function commit($optimize = true, $waitSearcher = true, $softCommit = false, $timeout = 3600)
 	{
 		$service = $this->_selectWriteService();
 
@@ -600,7 +596,7 @@ class Apache_Solr_Service_Balancer
 		{
 			try
 			{
-				return $service->commit($optimize, $waitFlush, $waitSearcher, $timeout);
+				return $service->commit($optimize, $waitSearcher, $softCommit, $timeout);
 			}
 			catch (Apache_Solr_HttpTransportException $e)
 			{
@@ -845,14 +841,14 @@ class Apache_Solr_Service_Balancer
 	 * Send an optimize command.  Will be synchronous unless both wait parameters are set
 	 * to false.
 	 *
-	 * @param boolean $waitFlush
 	 * @param boolean $waitSearcher
+	 * @param boolean $softCommit
 	 * @param float $timeout Maximum expected duration of the optimize operation on the server (otherwise, will throw a communication exception)
 	 * @return Apache_Solr_Response
 	 *
 	 * @throws Apache_Solr_HttpTransportException If an error occurs during the service call
 	 */
-	public function optimize($waitFlush = true, $waitSearcher = true, $timeout = 3600)
+	public function optimize($waitSearcher = true, $softCommit = false, $timeout = 3600)
 	{
 		$service = $this->_selectWriteService();
 
@@ -860,7 +856,7 @@ class Apache_Solr_Service_Balancer
 		{
 			try
 			{
-				return $service->optimize($waitFlush, $waitSearcher, $timeout);
+				return $service->optimize($waitSearcher, $softCommit, $timeout);
 			}
 			catch (Apache_Solr_HttpTransportException $e)
 			{

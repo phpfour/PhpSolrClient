@@ -673,24 +673,20 @@ class Apache_Solr_Service
 	 * Add a Solr Document to the index
 	 *
 	 * @param Apache_Solr_Document $document
-	 * @param boolean $allowDups
-	 * @param boolean $overwritePending
-	 * @param boolean $overwriteCommitted
+	 * @param boolean $overwrite
 	 * @param integer $commitWithin The number of milliseconds that a document must be committed within, see @{link http://wiki.apache.org/solr/UpdateXmlMessages#The_Update_Schema} for details.  If left empty this property will not be set in the request.
 	 * @return Apache_Solr_Response
 	 *
 	 * @throws Apache_Solr_HttpTransportException If an error occurs during the service call
 	 */
-	public function addDocument(Apache_Solr_Document $document, $allowDups = false, $overwritePending = true, $overwriteCommitted = true, $commitWithin = 0)
+	public function addDocument(Apache_Solr_Document $document, $overwrite = true, $commitWithin = 0)
 	{
-		$dupValue = $allowDups ? 'true' : 'false';
-		$pendingValue = $overwritePending ? 'true' : 'false';
-		$committedValue = $overwriteCommitted ? 'true' : 'false';
+		$overwriteValue = $overwrite ? 'true' : 'false';
 		
 		$commitWithin = (int) $commitWithin;
 		$commitWithinString = $commitWithin > 0 ? " commitWithin=\"{$commitWithin}\"" : '';
 		
-		$rawPost = "<add allowDups=\"{$dupValue}\" overwritePending=\"{$pendingValue}\" overwriteCommitted=\"{$committedValue}\"{$commitWithinString}>";
+		$rawPost = "<add overwrite=\"{$overwriteValue}\"{$commitWithinString}>";
 		$rawPost .= $this->_documentToXmlFragment($document);
 		$rawPost .= '</add>';
 
@@ -701,24 +697,20 @@ class Apache_Solr_Service
 	 * Add an array of Solr Documents to the index all at once
 	 *
 	 * @param array $documents Should be an array of Apache_Solr_Document instances
-	 * @param boolean $allowDups
-	 * @param boolean $overwritePending
-	 * @param boolean $overwriteCommitted
+	 * @param boolean $overwrite
 	 * @param integer $commitWithin The number of milliseconds that a document must be committed within, see @{link http://wiki.apache.org/solr/UpdateXmlMessages#The_Update_Schema} for details.  If left empty this property will not be set in the request.
 	 * @return Apache_Solr_Response
 	 *
 	 * @throws Apache_Solr_HttpTransportException If an error occurs during the service call
 	 */
-	public function addDocuments($documents, $allowDups = false, $overwritePending = true, $overwriteCommitted = true, $commitWithin = 0)
+	public function addDocuments($documents, $overwrite = true, $commitWithin = 0)
 	{
-		$dupValue = $allowDups ? 'true' : 'false';
-		$pendingValue = $overwritePending ? 'true' : 'false';
-		$committedValue = $overwriteCommitted ? 'true' : 'false';
+		$overwriteValue = $overwrite ? 'true' : 'false';
 
 		$commitWithin = (int) $commitWithin;
 		$commitWithinString = $commitWithin > 0 ? " commitWithin=\"{$commitWithin}\"" : '';
 
-		$rawPost = "<add allowDups=\"{$dupValue}\" overwritePending=\"{$pendingValue}\" overwriteCommitted=\"{$committedValue}\"{$commitWithinString}>";
+		$rawPost = "<add overwrite=\"{$overwriteValue}\"{$commitWithinString}>";
 
 		foreach ($documents as $document)
 		{
@@ -811,19 +803,20 @@ class Apache_Solr_Service
 	 * Send a commit command.  Will be synchronous unless both wait parameters are set to false.
 	 *
 	 * @param boolean $expungeDeletes Defaults to false, merge segments with deletes away
-	 * @param boolean $waitFlush Defaults to true,  block until index changes are flushed to disk
 	 * @param boolean $waitSearcher Defaults to true, block until a new searcher is opened and registered as the main query searcher, making the changes visible
+	 * @param boolean $softCommit Defaults to false, perform a soft commit - this will refresh the 'view' of the index in a more performant manner, but without "on-disk" guarantees
 	 * @param float $timeout Maximum expected duration (in seconds) of the commit operation on the server (otherwise, will throw a communication exception). Defaults to 1 hour
 	 * @return Apache_Solr_Response
 	 *
 	 * @throws Apache_Solr_HttpTransportException If an error occurs during the service call
 	 */
-	public function commit($expungeDeletes = false, $waitFlush = true, $waitSearcher = true, $timeout = 3600)
+	public function commit($expungeDeletes = false, $waitSearcher = true, $softCommit = false, $timeout = 3600)
 	{
 		$expungeValue = $expungeDeletes ? 'true' : 'false';
 		$searcherValue = $waitSearcher ? 'true' : 'false';
+		$commitValue = $softCommit ? 'true' : 'false';
 
-		$rawPost = '<commit expungeDeletes="' . $expungeValue . '" waitSearcher="' . $searcherValue . '" />';
+		$rawPost = '<commit expungeDeletes="' . $expungeValue . '" waitSearcher="' . $searcherValue . '" softCommit="' . $commitValue . '" />';
 
 		return $this->_sendRawPost($this->_updateUrl, $rawPost, $timeout);
 	}
@@ -1106,14 +1099,13 @@ class Apache_Solr_Service
 	 * Send an optimize command.  Will be synchronous unless both wait parameters are set
 	 * to false.
 	 *
-	 * @param boolean $waitFlush
 	 * @param boolean $waitSearcher
 	 * @param float $timeout Maximum expected duration of the commit operation on the server (otherwise, will throw a communication exception)
 	 * @return Apache_Solr_Response
 	 *
 	 * @throws Apache_Solr_HttpTransportException If an error occurs during the service call
 	 */
-	public function optimize($waitFlush = true, $waitSearcher = true, $timeout = 3600)
+	public function optimize($waitSearcher = true, $timeout = 3600)
 	{
 		$searcherValue = $waitSearcher ? 'true' : 'false';
 

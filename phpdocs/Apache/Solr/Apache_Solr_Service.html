@@ -264,19 +264,19 @@
 				<div class="method-definition">
 											<span class="method-result"><a href="../../Apache/Solr/Apache_Solr_Response.html">Apache_Solr_Response</a></span>
 										<a href="#addDocument" title="details" class="method-name">addDocument</a>
-											(<span class="var-type"><a href="../../Apache/Solr/Apache_Solr_Document.html">Apache_Solr_Document</a></span>&nbsp;<span class="var-name">$document</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allowDups</span> = <span class="var-default">false</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwritePending</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwriteCommitted</span> = <span class="var-default">true</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$commitWithin</span> = <span class="var-default">0</span>])
+											(<span class="var-type"><a href="../../Apache/Solr/Apache_Solr_Document.html">Apache_Solr_Document</a></span>&nbsp;<span class="var-name">$document</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwrite</span> = <span class="var-default">true</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$commitWithin</span> = <span class="var-default">0</span>])
 									</div>
 														
 				<div class="method-definition">
 											<span class="method-result"><a href="../../Apache/Solr/Apache_Solr_Response.html">Apache_Solr_Response</a></span>
 										<a href="#addDocuments" title="details" class="method-name">addDocuments</a>
-											(<span class="var-type">array</span>&nbsp;<span class="var-name">$documents</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allowDups</span> = <span class="var-default">false</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwritePending</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwriteCommitted</span> = <span class="var-default">true</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$commitWithin</span> = <span class="var-default">0</span>])
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$documents</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwrite</span> = <span class="var-default">true</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$commitWithin</span> = <span class="var-default">0</span>])
 									</div>
 														
 				<div class="method-definition">
 											<span class="method-result"><a href="../../Apache/Solr/Apache_Solr_Response.html">Apache_Solr_Response</a></span>
 										<a href="#commit" title="details" class="method-name">commit</a>
-											([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$expungeDeletes</span> = <span class="var-default">false</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitFlush</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitSearcher</span> = <span class="var-default">true</span>], [<span class="var-type">float</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">3600</span>])
+											([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$expungeDeletes</span> = <span class="var-default">false</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitSearcher</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$softCommit</span> = <span class="var-default">false</span>], [<span class="var-type">float</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">3600</span>])
 									</div>
 														
 				<div class="method-definition">
@@ -378,7 +378,7 @@
 				<div class="method-definition">
 											<span class="method-result"><a href="../../Apache/Solr/Apache_Solr_Response.html">Apache_Solr_Response</a></span>
 										<a href="#optimize" title="details" class="method-name">optimize</a>
-											([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitFlush</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitSearcher</span> = <span class="var-default">true</span>], [<span class="var-type">float</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">3600</span>])
+											([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitSearcher</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$softCommit</span> = <span class="var-default">false</span>], [<span class="var-type">float</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">3600</span>])
 									</div>
 																						
 				<div class="method-definition">
@@ -997,7 +997,7 @@
 		<span class="method-name">
 			addDocument
 		</span>
-					(<span class="var-type"><a href="../../Apache/Solr/Apache_Solr_Document.html">Apache_Solr_Document</a></span>&nbsp;<span class="var-name">$document</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allowDups</span> = <span class="var-default">false</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwritePending</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwriteCommitted</span> = <span class="var-default">true</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$commitWithin</span> = <span class="var-default">0</span>])
+					(<span class="var-type"><a href="../../Apache/Solr/Apache_Solr_Document.html">Apache_Solr_Document</a></span>&nbsp;<span class="var-name">$document</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwrite</span> = <span class="var-default">true</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$commitWithin</span> = <span class="var-default">0</span>])
 			</div>
 	
 			<ul class="parameters">
@@ -1006,13 +1006,7 @@
 				<span class="var-name">$document</span>			</li>
 					<li>
 				<span class="var-type">boolean</span>
-				<span class="var-name">$allowDups</span>			</li>
-					<li>
-				<span class="var-type">boolean</span>
-				<span class="var-name">$overwritePending</span>			</li>
-					<li>
-				<span class="var-type">boolean</span>
-				<span class="var-name">$overwriteCommitted</span>			</li>
+				<span class="var-name">$overwrite</span>			</li>
 					<li>
 				<span class="var-type">integer</span>
 				<span class="var-name">$commitWithin</span><span class="var-description">: The number of milliseconds that a document must be committed within, see @{link http://wiki.apache.org/solr/UpdateXmlMessages#The_Update_Schema} for details.  If left empty this property will not be set in the request.</span>			</li>
@@ -1039,7 +1033,7 @@
 		<span class="method-name">
 			addDocuments
 		</span>
-					(<span class="var-type">array</span>&nbsp;<span class="var-name">$documents</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$allowDups</span> = <span class="var-default">false</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwritePending</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwriteCommitted</span> = <span class="var-default">true</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$commitWithin</span> = <span class="var-default">0</span>])
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$documents</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$overwrite</span> = <span class="var-default">true</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$commitWithin</span> = <span class="var-default">0</span>])
 			</div>
 	
 			<ul class="parameters">
@@ -1048,13 +1042,7 @@
 				<span class="var-name">$documents</span><span class="var-description">: Should be an array of Apache_Solr_Document instances</span>			</li>
 					<li>
 				<span class="var-type">boolean</span>
-				<span class="var-name">$allowDups</span>			</li>
-					<li>
-				<span class="var-type">boolean</span>
-				<span class="var-name">$overwritePending</span>			</li>
-					<li>
-				<span class="var-type">boolean</span>
-				<span class="var-name">$overwriteCommitted</span>			</li>
+				<span class="var-name">$overwrite</span>			</li>
 					<li>
 				<span class="var-type">integer</span>
 				<span class="var-name">$commitWithin</span><span class="var-description">: The number of milliseconds that a document must be committed within, see @{link http://wiki.apache.org/solr/UpdateXmlMessages#The_Update_Schema} for details.  If left empty this property will not be set in the request.</span>			</li>
@@ -1081,7 +1069,7 @@
 		<span class="method-name">
 			commit
 		</span>
-					([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$expungeDeletes</span> = <span class="var-default">false</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitFlush</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitSearcher</span> = <span class="var-default">true</span>], [<span class="var-type">float</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">3600</span>])
+					([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$expungeDeletes</span> = <span class="var-default">false</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitSearcher</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$softCommit</span> = <span class="var-default">false</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$softCommit</span> = <span class="var-default">false</span>], [<span class="var-type">float</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">3600</span>])
 			</div>
 	
 			<ul class="parameters">
@@ -1090,10 +1078,10 @@
 				<span class="var-name">$expungeDeletes</span><span class="var-description">: Defaults to false, merge segments with deletes away</span>			</li>
 					<li>
 				<span class="var-type">boolean</span>
-				<span class="var-name">$waitFlush</span><span class="var-description">: Defaults to true,  block until index changes are flushed to disk</span>			</li>
+				<span class="var-name">$waitSearcher</span><span class="var-description">: Defaults to true, block until a new searcher is opened and registered as the main query searcher, making the changes visible</span>			</li>
 					<li>
 				<span class="var-type">boolean</span>
-				<span class="var-name">$waitSearcher</span><span class="var-description">: Defaults to true, block until a new searcher is opened and registered as the main query searcher, making the changes visible</span>			</li>
+				<span class="var-name">$softCommit</span><span class="var-description">: Defaults to false, perform a soft commit - this will refresh the 'view' of the index in a more performant manner, but without "on-disk" guarantees</span>			</li>
 					<li>
 				<span class="var-type">float</span>
 				<span class="var-name">$timeout</span><span class="var-description">: Maximum expected duration (in seconds) of the commit operation on the server (otherwise, will throw a communication exception). Defaults to 1 hour</span>			</li>
@@ -1622,16 +1610,16 @@
 		<span class="method-name">
 			optimize
 		</span>
-					([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitFlush</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitSearcher</span> = <span class="var-default">true</span>], [<span class="var-type">float</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">3600</span>])
+					([<span class="var-type">boolean</span>&nbsp;<span class="var-name">$waitSearcher</span> = <span class="var-default">true</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$softCommit</span> = <span class="var-default">false</span>], [<span class="var-type">float</span>&nbsp;<span class="var-name">$timeout</span> = <span class="var-default">3600</span>])
 			</div>
 	
 			<ul class="parameters">
 					<li>
 				<span class="var-type">boolean</span>
-				<span class="var-name">$waitFlush</span>			</li>
+				<span class="var-name">$waitSearcher</span>			</li>
 					<li>
 				<span class="var-type">boolean</span>
-				<span class="var-name">$waitSearcher</span>			</li>
+				<span class="var-name">$softCommit</span>			</li>
 					<li>
 				<span class="var-type">float</span>
 				<span class="var-name">$timeout</span><span class="var-description">: Maximum expected duration of the commit operation on the server (otherwise, will throw a communication exception)</span>			</li>
